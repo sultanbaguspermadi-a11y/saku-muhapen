@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123d32">
+  <meta name="author" content="Sultan Bagus Permadi">
+  <meta name="description" content="SakuArab — Kamus Arab digital untuk siswa SMK Muhammadiyah Pencongan, dengan kosakata RPL, TBKR, Akuntansi, dan TSM.">
+  <title>SakuArab — Kamus Arab Digital SMK MUHAPEN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=DM+Sans:wght@400;500;600;700;800&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Lewati ke konten</a>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Navigasi utama">
+      <a class="brand" href="#top" aria-label="SakuArab, beranda">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none"><path d="M7 10.8C11.5 8.4 16.4 9 20 11.8V31c-3.6-2.8-8.5-3.4-13-1V10.8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M33 10.8C28.5 8.4 23.6 9 20 11.8V31c3.6-2.8 8.5-3.4 13-1V10.8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13 15.5c1.6.1 3 .5 4.3 1.3M13 20c1.6.1 3 .5 4.3 1.3M27 15.5c-1.6.1-3 .5-4.3 1.3M27 20c-1.6.1-3 .5-4.3 1.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </span>
+        <span class="brand-copy"><strong>SakuArab</strong><small>KAMUS DIGITAL SMK</small></span>
+      </a>
+
+      <div class="sidebar-label">JELAJAHI KAMUS</div>
+      <nav class="department-nav" id="department-nav" aria-label="Filter jurusan">
+        <button class="department-link is-active" data-department="Semua" aria-pressed="true">
+          <span class="nav-icon" aria-hidden="true" data-icon="grid"></span><span class="department-name">Semua jurusan</span><span class="department-count" data-count="Semua">—</span>
+        </button>
+        <button class="department-link" data-department="RPL" aria-pressed="false">
+          <span class="dept-mark dept-rpl" aria-hidden="true">R</span><span class="department-name">Rekayasa Perangkat Lunak</span><span class="department-count" data-count="RPL">—</span>
+        </button>
+        <button class="department-link" data-department="TBKR" aria-pressed="false">
+          <span class="dept-mark dept-tbkr" aria-hidden="true">B</span><span class="department-name">Teknik Bodi Kendaraan</span><span class="department-count" data-count="TBKR">—</span>
+        </button>
+        <button class="department-link" data-department="Akuntansi" aria-pressed="false">
+          <span class="dept-mark dept-ak" aria-hidden="true">A</span><span class="department-name">Akuntansi</span><span class="department-count" data-count="Akuntansi">—</span>
+        </button>
+        <button class="department-link" data-department="TSM" aria-pressed="false">
+          <span class="dept-mark dept-tsm" aria-hidden="true">T</span><span class="department-name">Teknik Sepeda Motor</span><span class="department-count" data-count="TSM">—</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-rule"></div>
+      <div class="sidebar-label">KOLEKSI SAYA</div>
+      <button class="department-link saved-link" id="saved-shortcut" aria-pressed="false">
+        <span class="nav-icon" aria-hidden="true" data-icon="bookmark"></span><span class="department-name">Kata tersimpan</span><span class="department-count" id="saved-count">0</span>
+      </button>
+
+      <div class="sidebar-bottom">
+        <div class="sidebar-note"><span class="note-icon" aria-hidden="true" data-icon="book"></span><p>Pelajari kosakata Arab yang dekat dengan dunia keahlianmu.</p></div>
+        <div class="sidebar-credit">BELAJAR SEDIKIT, SETIAP HARI.</div>
+      </div>
+    </aside>
+
+    <div class="main-column" id="top">
+      <header class="topbar">
+        <div class="breadcrumb"><span class="breadcrumb-dot"></span><span>Ruang belajar</span><span class="breadcrumb-slash">/</span><strong>Kamus kosakata</strong></div>
+        <div class="topbar-actions">
+          <span class="status-label"><span class="status-dot"></span>Siap dipelajari</span>
+          <button class="settings-toggle" id="settings-toggle" type="button" aria-label="Atur tampilan kamus" aria-haspopup="dialog" aria-controls="settings-modal"><span data-icon="sliders" aria-hidden="true"></span><span>Personalisasi</span></button>
+          <button class="icon-button theme-toggle" id="theme-toggle" aria-label="Aktifkan mode gelap" title="Ganti tema"><span data-icon="moon" aria-hidden="true"></span></button>
+        </div>
+      </header>
+
+      <nav class="mobile-department-nav" id="mobile-department-nav" aria-label="Filter jurusan di perangkat seluler">
+        <button class="mobile-chip is-active" data-department="Semua" aria-pressed="true">Semua</button>
+        <button class="mobile-chip" data-department="RPL" aria-pressed="false">RPL</button>
+        <button class="mobile-chip" data-department="TBKR" aria-pressed="false">TBKR</button>
+        <button class="mobile-chip" data-department="Akuntansi" aria-pressed="false">Akuntansi</button>
+        <button class="mobile-chip" data-department="TSM" aria-pressed="false">TSM</button>
+      </nav>
+
+      <main class="main-content" id="main-content">
+        <section class="welcome-section" aria-labelledby="page-title">
+          <div class="welcome-copy">
+            <div class="cover-brandline">
+              <a class="cover-brand-lockup" href="#top" aria-label="SakuArab, beranda">
+                <span class="cover-brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M7 10.8C11.5 8.4 16.4 9 20 11.8V31c-3.6-2.8-8.5-3.4-13-1V10.8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M33 10.8C28.5 8.4 23.6 9 20 11.8V31c3.6-2.8 8.5-3.4 13-1V10.8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13 15.5c1.6.1 3 .5 4.3 1.3M13 20c1.6.1 3 .5 4.3 1.3M27 15.5c-1.6.1-3 .5-4.3 1.3M27 20c-1.6.1-3 .5-4.3 1.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                <span class="cover-brand-text"><strong>SakuArab</strong><small>KAMUS ARAB DIGITAL</small></span>
+              </a>
+              <span class="cover-edition">SMK <b>MUHAPEN</b><span class="cover-edition-dot"></span> 4 JURUSAN</span>
+            </div>
+            <div class="eyebrow"><span class="eyebrow-line"></span>BAHASA ARAB · DUNIA KEJURUAN</div>
+            <h1 id="page-title">Kata baru,<br><em>peluang baru.</em></h1>
+            <p class="welcome-description">Kenali istilah bahasa Arab yang dekat dengan bidang keahlianmu. Cari kata, pahami makna, dan simpan kosakata favoritmu.</p>
+            <div class="cover-identity"><span class="cover-school-icon" data-icon="building" aria-hidden="true"></span><span class="cover-school-name">SMK Muhammadiyah Pencongan</span><span class="cover-identity-separator"></span><span class="cover-credit-label">Dikembangkan oleh</span><strong class="cover-author">Sultan Bagus Permadi</strong></div>
+            <div class="cover-bottom-row">
+              <div class="welcome-meta"><span class="meta-icon" data-icon="layers" aria-hidden="true"></span><span><strong id="total-words">Memuat kosakata…</strong> <span class="meta-muted">dari 4 jurusan</span></span><span class="meta-divider"></span><span class="meta-icon" data-icon="bookmark" aria-hidden="true"></span><span><strong id="meta-saved">0</strong> tersimpan</span></div>
+              <a class="cover-cta" href="#search-input">Mulai jelajahi <span data-icon="arrow-right" aria-hidden="true"></span></a>
+            </div>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="hero-art-ring ring-one"></div><div class="hero-art-ring ring-two"></div>
+            <div class="hero-art-card">
+              <span class="hero-card-kicker">DARI KAMUS</span>
+              <span class="hero-arabic" id="hero-arabic" lang="ar" dir="rtl">…</span>
+              <span class="hero-translation" id="hero-translation">Kosakata pilihan</span>
+              <span class="hero-card-divider"></span>
+              <span class="hero-card-bottom"><span class="hero-star" data-icon="sparkle"></span> Bahasa membuka wawasan</span>
+            </div>
+            <span class="art-dot art-dot-a"></span><span class="art-dot art-dot-b"></span><span class="art-plus">+</span>
+          </div>
+        </section>
+
+        <section class="search-section" aria-label="Cari kosakata">
+          <label class="search-box" for="search-input">
+            <span class="search-icon" data-icon="search" aria-hidden="true"></span>
+            <input id="search-input" type="search" autocomplete="off" spellcheck="false" placeholder="Cari kata Arab, arti Indonesia, transliterasi…" aria-describedby="search-help">
+            <span class="search-shortcut" aria-hidden="true">⌕</span>
+            <button class="search-clear" id="clear-search" type="button" aria-label="Hapus pencarian" hidden><span data-icon="x" aria-hidden="true"></span></button>
+          </label>
+          <p class="search-help" id="search-help">Contoh: <button type="button" class="search-suggestion" data-query="komputer">komputer</button><span class="suggestion-separator">·</span><button type="button" class="search-suggestion" data-query="مُحَاسَبَة">مُحَاسَبَة</button><span class="suggestion-separator">·</span><button type="button" class="search-suggestion" data-query="mesin">mesin</button></p>
+        </section>
+
+        <section class="results-section" aria-labelledby="results-title">
+          <div class="results-heading">
+            <div class="results-title-group"><div class="results-kicker">PERPUSTAKAAN KOSAKATA</div><h2 id="results-title">Jelajahi kata <span class="heading-period">.</span></h2><p id="active-description">Semua istilah dari empat jurusan pilihan.</p></div>
+            <div class="results-tools">
+              <span class="result-total" id="result-total" aria-live="polite">Memuat…</span>
+              <button id="favorites-toggle" class="filter-button" type="button" aria-pressed="false"><span data-icon="bookmark" aria-hidden="true"></span><span>Tersimpan</span></button>
+            </div>
+          </div>
+
+          <div class="active-filters" id="active-filters" hidden><span id="filter-summary"></span><button type="button" id="reset-filters">Atur ulang <span data-icon="x" aria-hidden="true"></span></button></div>
+
+          <div id="loading-state" class="state-panel loading-panel" role="status"><span class="spinner" aria-hidden="true"></span><div><strong>Menyiapkan kamus…</strong><p>Kosakata sedang dimuat dari berkas lokal.</p></div></div>
+          <div id="error-state" class="state-panel error-panel" role="alert" hidden><span class="state-icon" data-icon="alert" aria-hidden="true"></span><div><strong>Kamus belum bisa dibuka</strong><p id="error-message">Pastikan berkas words.json tersedia dan aplikasi dijalankan melalui server lokal.</p><button type="button" id="retry-load" class="text-action">Coba muat ulang <span data-icon="arrow-right" aria-hidden="true"></span></button></div></div>
+          <div id="empty-state" class="state-panel empty-panel" hidden><span class="state-icon" data-icon="search" aria-hidden="true"></span><div><strong id="empty-title">Belum ada kata yang cocok</strong><p id="empty-message">Coba kata lain atau atur ulang filter pencarian.</p><button id="empty-reset" type="button" class="text-action">Tampilkan semua kosakata <span data-icon="arrow-right" aria-hidden="true"></span></button></div></div>
+
+          <div id="word-grid" class="word-grid" aria-busy="true" aria-label="Daftar kosakata"></div>
+          <div class="load-more-wrap" id="load-more-wrap" hidden><p id="shown-count" class="shown-count"></p><button id="load-more" class="load-more-button" type="button">Muat lebih banyak <span data-icon="arrow-down" aria-hidden="true"></span></button></div>
+        </section>
+
+        <footer class="page-footer"><span class="footer-mark" aria-hidden="true">س</span><span><strong>SakuArab</strong> · SMK Muhammadiyah Pencongan</span><span class="footer-right">Dirancang oleh Sultan Bagus Permadi.</span></footer>
+      </main>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="word-modal" hidden>
+    <section class="word-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-meaning" tabindex="-1">
+      <div class="modal-topline"><span class="modal-label">LEMBAR KOSAKATA</span><button type="button" class="icon-button modal-close" id="modal-close" aria-label="Tutup detail kata"><span data-icon="x" aria-hidden="true"></span></button></div>
+      <div class="modal-word-header"><span id="modal-category" class="word-category">Jurusan</span><button type="button" id="modal-favorite" class="modal-save-button" aria-pressed="false"><span data-icon="bookmark" aria-hidden="true"></span><span>Simpan kata</span></button></div>
+      <h2 class="modal-arabic" id="modal-title" lang="ar" dir="rtl"></h2>
+      <p class="modal-meaning" id="modal-meaning"></p>
+      <div class="modal-transliteration"><span class="detail-label">TRANSLITERASI</span><span id="modal-transliteration"></span></div>
+      <div class="modal-example"><div class="detail-label"><span data-icon="message" aria-hidden="true"></span> CONTOH PENGGUNAAN</div><p class="modal-example-arabic" id="modal-example-arabic" lang="ar" dir="rtl"></p><p class="modal-example-translation" id="modal-example-translation"></p></div>
+      <div class="modal-footer"><span id="modal-department"></span><button class="modal-done" type="button" id="modal-done">Selesai <span data-icon="check" aria-hidden="true"></span></button></div>
+    </section>
+  </div>
+  <div class="settings-backdrop" id="settings-modal" hidden>
+    <section class="settings-dialog" role="dialog" aria-modal="true" aria-labelledby="settings-title" aria-describedby="settings-description" tabindex="-1">
+      <header class="settings-header">
+        <div class="settings-heading-lockup"><span class="settings-heading-icon" data-icon="sliders" aria-hidden="true"></span><div><p class="settings-eyebrow">RUANG PRIBADI</p><h2 id="settings-title">Atur tampilanmu</h2><p id="settings-description">Sesuaikan kamus agar nyaman dibaca. Perubahan tersimpan otomatis di perangkat ini.</p></div></div>
+        <button type="button" class="icon-button settings-close" id="settings-close" aria-label="Tutup pengaturan"><span data-icon="x" aria-hidden="true"></span></button>
+      </header>
+      <div class="settings-content">
+        <section class="setting-group" aria-labelledby="setting-font-size-label">
+          <div class="setting-label-row"><label id="setting-font-size-label" for="setting-arabic-size">Ukuran tulisan Arab</label><output id="setting-arabic-size-output" for="setting-arabic-size">32 px</output></div>
+          <input id="setting-arabic-size" class="setting-range" type="range" min="22" max="48" step="2" value="32">
+          <div class="range-extremes"><span>Kecil</span><span>Besar</span></div>
+          <p class="setting-hint">Mengubah ukuran kata utama pada kartu dan lembar detail.</p>
+        </section>
+        <section class="setting-group">
+          <label class="setting-label" for="setting-arabic-font">Gaya huruf Arab</label>
+          <select id="setting-arabic-font" class="setting-select">
+            <option value="naskh">Noto Naskh — klasik & seimbang</option>
+            <option value="amiri">Amiri — nuansa kitab</option>
+            <option value="scheherazade">Scheherazade — kaligrafis</option>
+            <option value="sans">Noto Sans Arabic — modern & bersih</option>
+            <option value="system">Font bawaan perangkat</option>
+          </select>
+          <div class="font-preview-wrap"><div class="font-preview-meta"><span>PRATINJAU HURUF</span><span id="font-preview-name">Noto Naskh Arabic</span></div><p class="font-preview-arabic" id="font-preview-arabic" lang="ar" dir="rtl">…</p></div>
+        </section>
+        <section class="setting-group">
+          <span class="setting-label">Kepadatan kartu</span>
+          <div class="setting-segmented" role="group" aria-label="Pilih kepadatan kartu">
+            <button type="button" data-density="comfortable" aria-pressed="true"><span data-icon="grid" aria-hidden="true"></span><span><strong>Nyaman</strong><small>Ruang lebih lega</small></span></button>
+            <button type="button" data-density="compact" aria-pressed="false"><span data-icon="layers" aria-hidden="true"></span><span><strong>Ringkas</strong><small>Lihat lebih banyak</small></span></button>
+          </div>
+        </section>
+        <section class="setting-group setting-pair">
+          <div><label class="setting-label" for="setting-accent">Warna aksen</label><select id="setting-accent" class="setting-select"><option value="emerald">Zamrud</option><option value="ocean">Biru laut</option><option value="clay">Terracotta</option><option value="indigo">Indigo</option></select></div>
+          <div><label class="setting-label" for="setting-theme">Tema tampilan</label><select id="setting-theme" class="setting-select"><option value="auto">Ikuti perangkat</option><option value="light">Terang</option><option value="dark">Gelap</option></select></div>
+        </section>
+      </div>
+      <footer class="settings-footer"><button type="button" class="settings-reset" id="settings-reset"><span data-icon="refresh" aria-hidden="true"></span> Kembalikan default</button><button type="button" class="settings-done" id="settings-done">Selesai <span data-icon="check" aria-hidden="true"></span></button></footer>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
